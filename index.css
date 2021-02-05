@@ -1,0 +1,64 @@
+html,
+body {
+    width: 100%;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(to right, rgb(234, 176, 194), rgb(172, 125, 199));
+}
+
+.js-todo {
+    width: 27rem;
+    height: 60vh;
+    text-align: center;
+    background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 3%;
+}
+
+.todo-icons {
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.todo-icons svg {
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.select-color {
+    color: rgb(163, 123, 204);
+}
+
+.unselect-color {
+    color: grey;
+}
+
+.todo-list {
+    margin-top: 1em;
+}
+
+.todo-date {
+    color: rgb(125, 140, 255);
+    font-size: 1.2rem;
+    height: 8vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 0.1px solid rgba(125, 140, 255, 0.25);
+}
+
+.todo-date span {
+    font-weight: bold;
+}
+
+.todo-date p {
+    font-weight: 300;
+}
