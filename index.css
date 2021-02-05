@@ -42,7 +42,7 @@ body {
 }
 
 .todo-list {
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 .todo-date {
@@ -61,4 +61,12 @@ body {
 
 .todo-date p {
     font-weight: 300;
+}
+
+.todo-list li {
+    padding-left: 2rem;
+    color: rgb(125, 140, 255);
+    text-align: start;
+    font-weight: 500;
+    padding-bottom: 2.5rem;
 }
