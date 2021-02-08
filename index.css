@@ -19,6 +19,7 @@ body {
     background-color: white;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 3%;
+    position: relative;
 }
 
 .todo-icons {
@@ -43,6 +44,11 @@ body {
 
 .todo-list {
     margin-top: 2em;
+    height: 40vh;
+    overflow-x: hidden;
+}
+.todo-list::-webkit-scrollbar {
+    display: none;
 }
 
 .todo-date {
@@ -68,5 +74,25 @@ body {
     color: rgb(125, 140, 255);
     text-align: start;
     font-weight: 500;
-    padding-bottom: 2.5rem;
+    padding-bottom: 2rem;
+}
+
+.todo-list li input {
+    margin-right: 1rem;
+}
+
+.check-todo {
+    text-decoration: line-through;
+    color: grey !important;
+}
+.todo-bottom {
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 0.1px solid rgba(125, 140, 255, 0.25);
+}
+.todo-input {
+    float: right;
 }
