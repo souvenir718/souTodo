@@ -19,7 +19,7 @@ function loadTodo() {
         const parsedTodos = JSON.parse(strTodo);
 
         parsedTodos.forEach(function (todo) {
-            paintTodo(todo.text, todo.isDone);
+            paintTodo(todo.text, todo.isDone, todo.date);
         });
     }
 }
@@ -27,7 +27,17 @@ function loadTodo() {
 function addTodo(event) {
     event.preventDefault();
     const todoText = todoInput.value;
-    paintTodo(todoText, false);
+    let today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const date = today.getDate();
+
+    const strMonth = month < 10 ? `0${month}` : month;
+    const strDate = date < 10 ? `0${date}` : date;
+
+    today = `${year}.${strMonth}.${strDate}`;
+
+    paintTodo(todoText, false, today);
     todoInput.value = '';
     addBtn.classList.remove('hide');
     todoInput.classList.add('hide');
@@ -59,21 +69,25 @@ function deleteTodo(event) {
     saveTodo();
 }
 
-function paintTodo(text, isDone) {
+function paintTodo(text, isDone, date) {
     const li = document.createElement('li');
     const span = document.createElement('span');
     const input = document.createElement('input');
     const newId = Math.random().toString(36).slice(2);
     const delBtn = document.createElement('span');
+    const dateText = document.createElement('span');
 
     input.setAttribute('type', 'checkbox');
     span.innerHTML = `${text} `;
+    dateText.innerHTML = date;
+    dateText.classList.add('date-todo');
     delBtn.innerHTML = '❌';
     delBtn.classList.add('del-todo');
 
     li.appendChild(input);
     li.appendChild(span);
     li.appendChild(delBtn);
+    li.appendChild(dateText);
     li.id = newId;
 
     if (isDone) {
@@ -88,6 +102,7 @@ function paintTodo(text, isDone) {
         id: newId,
         text,
         isDone: isDone,
+        date,
     };
 
     todoList.appendChild(li);

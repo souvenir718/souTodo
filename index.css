@@ -132,4 +132,13 @@ body {
 
 .del-todo {
     cursor: pointer;
+    padding-right: 2rem;
+    float: right;
+}
+
+.date-todo {
+    float: right;
+    padding-right: 1rem;
+    font-size: 0.8rem;
+    line-height: 1rem;
 }
