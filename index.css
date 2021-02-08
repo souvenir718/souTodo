@@ -94,6 +94,17 @@ body {
 }
 .todo-input {
     float: right;
+    width: 10rem;
+    height: 1.8rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+    border: 0.1px solid rgba(125, 140, 255, 0.5);
+    color: rgb(125, 140, 255);
+    outline: none;
+}
+.todo-input::placeholder {
+    color: rgb(125, 140, 255);
 }
 
 .bottom-container {
@@ -108,4 +119,17 @@ body {
 .bottom-container p,
 .todo-total {
     font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+.add-todo {
+    width: 12rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.del-todo {
+    cursor: pointer;
 }

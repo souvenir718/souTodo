@@ -2,6 +2,8 @@ const todoForm = document.querySelector('.js-todo'),
     todoInput = todoForm.querySelector('.todo-input'),
     todoList = todoForm.querySelector('.todo-list');
 const todoTotal = document.querySelector('.todo-total');
+const addBtn = document.querySelector('.add-todo');
+
 const TODOS_LS = 'TODO_LIST';
 
 let todos = [];
@@ -27,6 +29,8 @@ function addTodo(event) {
     const todoText = todoInput.value;
     paintTodo(todoText, false);
     todoInput.value = '';
+    addBtn.classList.remove('hide');
+    todoInput.classList.add('hide');
 }
 
 function completeTodo(event) {
@@ -42,17 +46,34 @@ function completeTodo(event) {
     saveTodo();
 }
 
+function deleteTodo(event) {
+    const li = event.target.parentNode;
+
+    todoList.removeChild(li);
+    const cleanList = todos.filter(function (todo) {
+        return todo.id !== li.id;
+    });
+
+    todos = cleanList;
+    todoTotal.innerHTML = todos.length;
+    saveTodo();
+}
+
 function paintTodo(text, isDone) {
     const li = document.createElement('li');
     const span = document.createElement('span');
     const input = document.createElement('input');
     const newId = Math.random().toString(36).slice(2);
+    const delBtn = document.createElement('span');
 
     input.setAttribute('type', 'checkbox');
     span.innerHTML = `${text} `;
+    delBtn.innerHTML = '❌';
+    delBtn.classList.add('del-todo');
 
     li.appendChild(input);
     li.appendChild(span);
+    li.appendChild(delBtn);
     li.id = newId;
 
     if (isDone) {
@@ -62,7 +83,7 @@ function paintTodo(text, isDone) {
     }
 
     input.addEventListener('change', completeTodo);
-
+    delBtn.addEventListener('click', deleteTodo);
     const newTodo = {
         id: newId,
         text,
@@ -75,8 +96,15 @@ function paintTodo(text, isDone) {
     saveTodo();
 }
 
+function showInput() {
+    addBtn.classList.add('hide');
+    todoInput.classList.remove('hide');
+}
+
 function init() {
     loadTodo();
 }
+
+addBtn.addEventListener('click', showInput);
 todoForm.addEventListener('submit', addTodo);
 init();
