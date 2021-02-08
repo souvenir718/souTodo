@@ -11,8 +11,8 @@
     <body>
         <div class="container">
             <form class="js-todo">
-                <div class="todo-date">
-                    <p><span>MONDAY</span>, March 14th</p>
+                <div class="js-date">
+                    <p><span class="date-day">MONDAY</span>, <span class="date">March 14th</span></p>
                 </div>
                 <!-- <div class="todo-icons">
                     <i class="fas fa-list-ul select-color list-icon"></i>
@@ -22,13 +22,16 @@
                     <!-- <li><input type="checkbox" /><span>Morning Run</span></li> -->
                 </ul>
                 <div class="todo-bottom">
-                    <p>Task : <span class="todo-total"></span></p>
-                    <input class="todo-input" type="text" placeholder="Write a Todo" />
+                    <div class="bottom-container">
+                        <p>Task : <span class="todo-total"></span></p>
+                        <input class="todo-input" type="text" placeholder="Write a Todo" />
+                    </div>
                 </div>
             </form>
         </div>
 
         <script src="./js/todo.js"></script>
+        <script src="./js/date.js"></script>
     </body>
 </html>
 

@@ -51,7 +51,7 @@ body {
     display: none;
 }
 
-.todo-date {
+.js-date {
     color: rgb(125, 140, 255);
     font-size: 1.2rem;
     height: 8vh;
@@ -86,13 +86,26 @@ body {
     color: grey !important;
 }
 .todo-bottom {
-    height: 6vh;
+    height: 8vh;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    position: absolute;
+    bottom: 0;
     border-top: 0.1px solid rgba(125, 140, 255, 0.25);
 }
 .todo-input {
     float: right;
+}
+
+.bottom-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(125, 140, 255);
+}
+
+.bottom-container p,
+.todo-total {
+    font-weight: bold;
 }
