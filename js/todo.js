@@ -17,7 +17,7 @@ function loadTodo() {
         const parsedTodos = JSON.parse(strTodo);
 
         parsedTodos.forEach(function (todo) {
-            paintTodo(todo.text);
+            paintTodo(todo.text, todo.isDone);
         });
     }
 }
@@ -25,16 +25,24 @@ function loadTodo() {
 function addTodo(event) {
     event.preventDefault();
     const todoText = todoInput.value;
-    paintTodo(todoText);
+    paintTodo(todoText, false);
     todoInput.value = '';
 }
 
 function completeTodo(event) {
     const li = event.target.parentNode;
     li.classList.toggle('check-todo');
+    // console.log(event.target.checked);
+    console.log(li.id);
+    console.log(todos);
+    const modifyList = todos.map((todo) => (todo.id === li.id ? { ...todo, isDone: event.target.checked } : todo));
+    console.log(modifyList);
+
+    todos = modifyList;
+    saveTodo();
 }
 
-function paintTodo(text) {
+function paintTodo(text, isDone) {
     const li = document.createElement('li');
     const span = document.createElement('span');
     const input = document.createElement('input');
@@ -47,11 +55,18 @@ function paintTodo(text) {
     li.appendChild(span);
     li.id = newId;
 
+    if (isDone) {
+        console.log(input);
+        input.checked = true;
+        li.classList.add('check-todo');
+    }
+
     input.addEventListener('change', completeTodo);
 
     const newTodo = {
         id: newId,
         text,
+        isDone: isDone,
     };
 
     todoList.appendChild(li);
