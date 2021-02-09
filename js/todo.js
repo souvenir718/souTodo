@@ -8,6 +8,16 @@ const TODOS_LS = 'TODO_LIST';
 
 let todos = [];
 
+function countTodo() {
+    let count = 0;
+    todos.map(function (todo) {
+        if (!todo.isDone) {
+            count++;
+        }
+    });
+    todoTotal.innerHTML = count;
+}
+
 function saveTodo() {
     localStorage.setItem(TODOS_LS, JSON.stringify(todos));
 }
@@ -47,12 +57,13 @@ function completeTodo(event) {
     const li = event.target.parentNode;
     li.classList.toggle('check-todo');
     // console.log(event.target.checked);
-    console.log(li.id);
-    console.log(todos);
+    // console.log(li.id);
+    // console.log(todos);
     const modifyList = todos.map((todo) => (todo.id === li.id ? { ...todo, isDone: event.target.checked } : todo));
-    console.log(modifyList);
+    // console.log(modifyList);
 
     todos = modifyList;
+    countTodo();
     saveTodo();
 }
 
@@ -65,7 +76,8 @@ function deleteTodo(event) {
     });
 
     todos = cleanList;
-    todoTotal.innerHTML = todos.length;
+    // todoTotal.innerHTML = todos.length;
+    countTodo();
     saveTodo();
 }
 
@@ -107,7 +119,8 @@ function paintTodo(text, isDone, date) {
 
     todoList.appendChild(li);
     todos.push(newTodo);
-    todoTotal.innerHTML = todos.length;
+    countTodo();
+    // todoTotal.innerHTML = todos.length;
     saveTodo();
 }
 
