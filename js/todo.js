@@ -78,7 +78,7 @@ function paintTodo(text, isDone, date) {
     const dateText = document.createElement('span');
 
     input.setAttribute('type', 'checkbox');
-    span.innerHTML = `${text} `;
+    span.innerHTML = `${text}`;
     dateText.innerHTML = date;
     dateText.classList.add('date-todo');
     delBtn.innerHTML = '❌';

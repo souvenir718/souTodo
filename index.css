@@ -77,8 +77,13 @@ body {
     padding-bottom: 2rem;
 }
 
+.todo-list li span:nth-child(2) {
+    font-weight: bold;
+}
+
 .todo-list li input {
     margin-right: 1rem;
+    cursor: pointer;
 }
 
 .check-todo {
@@ -95,7 +100,7 @@ body {
 .todo-input {
     float: right;
     width: 10rem;
-    height: 1.8rem;
+    height: 35%;
     border-radius: 2rem;
     padding: 0.5rem;
     padding-left: 1.5rem;
